@@ -17,12 +17,6 @@
     box-shadow: 0 0 6px 1px rgba(195, 51, 51, 0.5);
   }
 
-  .correct {
-    .highlighted {
-      box-shadow: 0 0 6px 1px rgba(0, 115, 101, 0.5);
-    }
-  }
-
   button {
     width: 50%;
     height: 100%;
@@ -38,6 +32,14 @@
 
     .selected {
       color: rgba(0, 0, 0, 0.9);
+    }
+  }
+}
+
+.correct {
+  .Answer {
+    .highlighted {
+      box-shadow: 0 0 6px 1px rgba(0, 115, 101, 0.5);
     }
   }
 }
