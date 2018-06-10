@@ -1,0 +1,39 @@
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: white;
+}
+
+header {
+  background-image: linear-gradient(269deg, rgba(33, 21, 250, 0.3), rgba(83, 147, 246, 0.82) 68%, #64bff4);
+  height: 60px;
+  padding: 20px;
+  color: white;
+
+  .title {
+    font-size: 1.5em;
+  }
+}
+
+.content {
+  flex: 1
+}

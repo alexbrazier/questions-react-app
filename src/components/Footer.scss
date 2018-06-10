@@ -1,0 +1,28 @@
+footer {
+  background-color: #1f2532;
+
+  .container {
+    margin: 0 auto;
+    max-width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .section {
+    flex-grow: 1;
+    width: 200px;
+  }
+
+  a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+    font-weight: normal;
+  }
+
+  p.info {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: normal;
+  }
+}

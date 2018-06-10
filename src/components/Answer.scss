@@ -1,0 +1,43 @@
+.Answer {
+  position: relative;
+  margin: 10px auto 10px auto;
+  max-width: 500px;
+  min-height: 40px;
+  border-radius: 100px;
+  border: solid 1px #fbfbfb;
+
+  .highlighted {
+    position: absolute;
+    transition: left 0.3s;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    border-radius: 100px;
+    background-color: rgba(249, 249, 249, 0.5);
+    box-shadow: 0 0 6px 1px rgba(195, 51, 51, 0.5);
+  }
+
+  .correct {
+    .highlighted {
+      box-shadow: 0 0 6px 1px rgba(0, 115, 101, 0.5);
+    }
+  }
+
+  button {
+    width: 50%;
+    height: 100%;
+    font-size: 15px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    transition: color 0.3s;
+    padding: 15px 0;
+
+    .selected {
+      color: rgba(0, 0, 0, 0.9);
+    }
+  }
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "question": "An animal cell contains:",
+    "answers": [
+      {
+        "correct": 1,
+        "selected": 1,
+        "options": ["Cell wall", "Ribosomes"]
+      },
+      {
+        "correct": 0,
+        "selected": 1,
+        "options": ["Cytoplasm", "Chloroplast"]
+      },
+      {
+        "correct": 0,
+        "selected": 1,
+        "options": ["Partially permeable membrane", "Impermeable membrane"]
+      },
+      {
+        "correct": 1,
+        "selected": 0,
+        "options": ["Cellulose", "Mitochondria"]
+      }
+    ]
+  },
+  {
+    "question": "What are the ideal conditions inside an office?",
+    "answers": [
+      {
+        "correct": 0,
+        "selected": 1,
+        "options": ["Good pay", "Bad pay"]
+      },
+      {
+        "correct": 1,
+        "selected": 1,
+        "options": ["Lots of meetings", "Less meetings"]
+      },
+      {
+        "correct": 0,
+        "selected": 0,
+        "options": ["Free coffee", "Expensive coffee"]
+      },
+      {
+        "correct": 0,
+        "selected": 1,
+        "options": ["Beer in office", "Dog in office"]
+      }
+    ]
+  }
+]
