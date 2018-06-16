@@ -2,6 +2,7 @@
   "name": "questions-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://alexbrazier.github.io/questions-react-app",
   "dependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
@@ -51,7 +52,9 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "lint": "eslint src/**/*.jsx src/**/*.js"
+    "lint": "eslint src/**/*.jsx src/**/*.js",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -107,6 +110,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint-config-airbnb": "^16.1.0",
+    "gh-pages": "^1.2.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.3",
     "sinon": "^5.1.1"
