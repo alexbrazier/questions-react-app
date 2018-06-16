@@ -15,23 +15,30 @@ export default class Question extends Component {
 
   constructor(props) {
     super(props);
-    this.state = props;
+    this.state = {
+      selected: props.answers.map(a => a.selected),
+    };
   }
 
-  toggle = index => (selected) => {
-    const answers = [...this.state.answers];
-    answers[index].selected = selected;
-    const correct = answers.every(a => a.selected === a.correct);
-    this.setState({ answers, correct });
+  toggle = index => (isSelected) => {
+    const selected = [...this.state.selected];
+    selected[index] = isSelected;
+    const correct = this.props.answers.every((a, i) => selected[i] === a.correct);
+    this.setState({ selected, correct });
   }
 
   render() {
     return (
       <div className={`Question${this.state.correct ? ' correct' : ''}`}>
-        <p className="question">{this.state.question}</p>
-        {this.state.answers.map((answer, i) =>
-          <Answer key={i} {...answer} toggle={this.toggle(i)} />)
-        }
+        <p className="question">{this.props.question}</p>
+        {this.props.answers.map((answer, i) => (
+          <Answer
+            key={i}
+            options={answer.options}
+            selected={this.state.selected[i]}
+            toggle={this.toggle(i)}
+          />
+        ))}
         <p className="result">The answer is {this.state.correct ? 'correct' : 'incorrect'}</p>
       </div>
     );
