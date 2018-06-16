@@ -9,7 +9,7 @@ describe('<Question />', () => {
   it('renders Question div', () => {
     const data = {
       question: 'test',
-      answers: [{ selected: 1, correct: 1, options: ['a', 'b'] }],
+      answers: [{ selected: 0, correct: 1, options: ['a', 'b'] }],
     };
     const wrapper = shallow(<Question {...data} />);
     expect(wrapper.find('.Question')).to.have.length(1);
@@ -50,7 +50,7 @@ describe('<Question />', () => {
   it('renders incorrect if wrong answer', () => {
     const data = {
       question: 'test',
-      answers: [{ selected: 1, correct: 1, options: ['a', 'b'] }],
+      answers: [{ selected: 0, correct: 1, options: ['a', 'b'] }],
     };
     const wrapper = shallow(<Question {...data} />);
     expect(wrapper.find('.result').first().text()).to.equal('The answer is incorrect');
@@ -74,19 +74,57 @@ describe('<Question />', () => {
     const wrapper = shallow(<Question {...data} />);
     const setStateMock = sinon.stub();
     wrapper.instance().setState = setStateMock;
-    const toggle = wrapper.instance().toggle(0);
+    const { toggle } = wrapper.instance();
     beforeEach(() => {
       setStateMock.reset();
     });
 
-    it('sets correct to be false if not all answers are correct', () => {
-      toggle(0);
-      expect(setStateMock.args[0][0].correct).to.equal(false);
+    it('sets selected to selected answer if 0', () => {
+      const fakeEvent = {
+        target: {
+          dataset: { option: 0, answer: 0 },
+        },
+      };
+      toggle(fakeEvent);
+
+      expect(setStateMock.args[0][0].selected[0]).to.equal(0);
     });
 
-    it('sets correct to be true if all answers are correct', () => {
-      toggle(1);
-      expect(setStateMock.args[0][0].correct).to.equal(true);
+    it('sets selected to selected answer if 1', () => {
+      const fakeEvent = {
+        target: {
+          dataset: { option: 0, answer: 1 },
+        },
+      };
+      toggle(fakeEvent);
+      expect(setStateMock.args[0][0].selected[0]).to.equal(1);
+    });
+  });
+
+  describe('backgroundColour', () => {
+    it('should return correct background colour when all correct', () => {
+      const result = Question.backgroundColour(3, 3);
+      expect(result).to.equal('linear-gradient(to bottom, rgba(71, 228, 193), rgba(71, 205, 221))');
+    });
+
+    it('should return correct background colour if all wrong', () => {
+      const result = Question.backgroundColour(0, 3);
+      expect(result).to.equal('linear-gradient(to bottom, rgba(250, 145, 97), rgba(247, 59, 28))');
+    });
+
+    it('should return correct background colour if 1/3 right', () => {
+      const result = Question.backgroundColour(1, 3);
+      expect(result).to.equal('linear-gradient(to bottom, rgba(250, 173, 97), rgba(247, 109, 28))');
+    });
+
+    it('should return correct background colour if 2/3 right', () => {
+      const result = Question.backgroundColour(2, 3);
+      expect(result).to.equal('linear-gradient(to bottom, rgba(250, 201, 97), rgba(247, 159, 28))');
+    });
+
+    it('should return correct background colour if 2/4 right', () => {
+      const result = Question.backgroundColour(2, 4);
+      expect(result).to.equal('linear-gradient(to bottom, rgba(250, 187, 97), rgba(247, 134, 28))');
     });
   });
 });

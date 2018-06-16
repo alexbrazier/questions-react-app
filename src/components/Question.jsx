@@ -25,7 +25,7 @@ export default class Question extends Component {
     const greenMin = [145, 59];
     const greenRange = [85, 151];
     const ratio = correct / total;
-    const green = greenMin.map((g, i) => g + greenRange[i] * ratio);
+    const green = greenMin.map((g, i) => Math.floor(g + greenRange[i] * ratio));
     return `linear-gradient(to bottom, rgba(250, ${green[0]}, 97), rgba(247, ${green[1]}, 28))`;
   }
 

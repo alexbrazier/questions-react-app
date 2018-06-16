@@ -10,6 +10,7 @@ describe('<Answer />', () => {
     const data = {
       options: ['a', 'b'],
       selected: 0,
+      index: 0,
       toggle: () => {},
     };
     const wrapper = shallow(<Answer {...data} />);
@@ -20,6 +21,7 @@ describe('<Answer />', () => {
     const data = {
       options: ['a', 'b'],
       selected: 0,
+      index: 0,
       toggle: () => {},
     };
     const wrapper = shallow(<Answer {...data} />);
@@ -30,6 +32,7 @@ describe('<Answer />', () => {
     const data = {
       options: ['a', 'b'],
       selected: 0,
+      index: 0,
       toggle: () => {},
     };
     const wrapper = shallow(<Answer {...data} />);
@@ -41,6 +44,7 @@ describe('<Answer />', () => {
     const data = {
       options: ['a', 'b'],
       selected: 1,
+      index: 0,
       toggle: () => {},
     };
     const wrapper = shallow(<Answer {...data} />);
@@ -52,12 +56,13 @@ describe('<Answer />', () => {
     const data = {
       options: ['a', 'b'],
       selected: 0,
+      index: 0,
       toggle: sinon.spy(),
     };
     const wrapper = shallow(<Answer {...data} />);
     wrapper.find('button').at(0).simulate('click');
     wrapper.find('button').at(1).simulate('click');
-    expect(data.toggle.firstCall.calledWith(0)).to.equal(true);
-    expect(data.toggle.secondCall.calledWith(1)).to.equal(true);
+    expect(data.toggle.called).to.equal(true);
+    expect(data.toggle.calledTwice).to.equal(true);
   });
 });
