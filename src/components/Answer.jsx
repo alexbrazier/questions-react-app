@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Answer.scss';
 
-const Answer = ({ options, selected, toggle }) => (
+const Answer = props => (
   <div className="Answer">
-    <div className="highlighted" style={{ left: selected ? '50%' : 0 }} />
-    {options.map((option, i) => (
+    <div className="highlighted" style={{ left: props.selected ? '50%' : 0 }} />
+    {props.options.map((option, i) => (
       <button
         key={i}
-        className={`${selected === i ? 'selected' : ''}`}
-        onClick={() => toggle(i)}
+        data-answer={props.index}
+        data-option={i}
+        className={`${props.selected === i ? 'selected' : ''}`}
+        onClick={props.toggle}
       >
         {option}
       </button>
@@ -21,6 +23,7 @@ Answer.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   selected: PropTypes.number.isRequired,
   toggle: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Answer;

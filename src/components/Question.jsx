@@ -20,9 +20,10 @@ export default class Question extends Component {
     };
   }
 
-  toggle = index => (isSelected) => {
+  toggle = (e) => {
+    const { option, answer } = e.target.dataset;
     const selected = [...this.state.selected];
-    selected[index] = isSelected;
+    selected[Number(answer)] = Number(option);
     const correct = this.props.answers.every((a, i) => selected[i] === a.correct);
     this.setState({ selected, correct });
   }
@@ -34,9 +35,10 @@ export default class Question extends Component {
         {this.props.answers.map((answer, i) => (
           <Answer
             key={i}
+            index={i}
             options={answer.options}
             selected={this.state.selected[i]}
-            toggle={this.toggle(i)}
+            toggle={this.toggle}
           />
         ))}
         <p className="result">The answer is {this.state.correct ? 'correct' : 'incorrect'}</p>
